@@ -1,12 +1,12 @@
-import express from "express";
-import cors from "cors";
+import express from "express"
+import cors from "cors"
 
-const app = express();
+const app = express()
 
 // middlewares
-app.use(cors());
-app.use(express.json());
-app.use(express.urlencoded({ extended: true }));
+app.use(cors())
+app.use(express.json())
+app.use(express.urlencoded({ extended: true }))
 
 let users = [
   {
@@ -152,7 +152,7 @@ let users = [
     phone: "763 234 235",
     createdAt: "01.01.2023",
   },
-];
+]
 
 let products = [
   {
@@ -252,7 +252,7 @@ let products = [
     createdAt: "01.02.2023",
     inStock: true,
   },
-];
+]
 
 app.get("/", (req, res) => {
   res.json({
@@ -263,55 +263,55 @@ app.get("/", (req, res) => {
       "/api/products",
       "/api/products/:id"
     ]
-  });
-});
+  })
+})
 
 // GET USERS
 app.get("/api/users", (req, res) => {
-  res.json(users);
-});
+  res.json(users)
+})
 
 // GET USER
 app.get("/api/users/:id", (req, res) => {
-  const user = users.find((user) => user.id === parseInt(req.params.id));
-  res.json(user);
-});
+  const user = users.find((user) => user.id === parseInt(req.params.id))
+  res.json(user)
+})
 
 // ADD USER
 app.post("/api/users", (req, res) => {
   users.unshift(req.body)
-  res.json(users);
-});
+  res.json(users)
+})
 
 // DELETE USER
 app.delete("/api/users/:id", (req, res) => {
-  users = users.filter((user) => user.id !== parseInt(req.params.id));
-  res.json("User deleted!");
-});
+  users = users.filter((user) => user.id !== parseInt(req.params.id))
+  res.json("User deleted!")
+})
 
 // GET PRODUCTS
 app.get("/api/products", (req, res) => {
-  res.json(products);
-});
+  res.json(products)
+})
 
 // GET PRODUCT
 app.get("/api/products/:id", (req, res) => {
-  const product = products.find((product) => product.id === parseInt(req.params.id));
-  res.json(product);
-});
+  const product = products.find((product) => product.id === parseInt(req.params.id))
+  res.json(product)
+})
 
 // ADD PRODUCT
 app.post("/api/products", (req, res) => {
   products.unshift(req.body)
-  res.json(products);
-});
+  res.json(products)
+})
 
 // DELETE PRODUCT
 app.delete("/api/products/:id", (req, res) => {
-  products = products.filter((product) => product.id !== parseInt(req.params.id));
-  res.json("Product deleted!");
-});
+  products = products.filter((product) => product.id !== parseInt(req.params.id))
+  res.json("Product deleted!")
+})
 
 app.listen(8000, () => {
-  console.log("Server running on port 8000.");
-});
+  console.log("Server running on port 8000.")
+})
