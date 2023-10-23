@@ -255,7 +255,15 @@ let products = [
 ];
 
 app.get("/", (req, res) => {
-  res.json({ message: "Hello World! Welcome to test-api" });
+  res.json({
+    message: "Hello World! Welcome to test-api",
+    routes: [
+      "/api/users",
+      "/api/users/:id",
+      "/api/products",
+      "/api/products/:id"
+    ]
+  });
 });
 
 // GET USERS
